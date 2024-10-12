@@ -1,0 +1,26 @@
+const express = require('express');  
+const app = express();  
+const port = 3000;  
+  
+// 假设我们有一个简单的内存数据库来存储客户订单  
+const customerOrders = {  
+    Alice: [  
+        // 这里应该是从数据库或其他存储中检索到的订单数据  
+        // 但为了简化，我们直接硬编码了一个订单  
+        {  
+            totalAmount: 2.5, // 这里应该是一个更复杂的对象，但为了简化而简化  
+            products: ['Tomato'] // 同样，为了简化而简化  
+        }  
+    ]  
+};  
+  
+// API端点，用于获取Alice的订单  
+app.get('/api/customer-orders/:customerName', (req, res) => {  
+    const customerName = req.params.customerName;  
+    const orders = customerOrders[customerName] || [];  
+    res.json(orders);  
+});  
+  
+app.listen(port, () => {  
+    console.log(`Server is running at http://localhost:${port}`);  
+});
