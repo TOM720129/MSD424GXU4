@@ -1,0 +1,16 @@
+async function fetchCustomerOrders() {  
+    try {  
+        // 假设后端有一个API可以获取客户的订单  
+        const response = await fetch('/api/customer-orders/Alice');  
+        if (!response.ok) {  
+            throw new Error('Network response was not ok');  
+        }  
+        const data = await response.json();  
+        console.log('Customer Orders:', data);  
+    } catch (error) {  
+        console.error('There was a problem with the fetch operation:', error);  
+    }  
+}  
+  
+// 调用函数以获取并显示Alice的订单  
+fetchCustomerOrders();
